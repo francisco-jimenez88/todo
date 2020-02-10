@@ -1,0 +1,91 @@
+* {
+    box-sizing: border-box;
+    padding: 0px;
+    font-family: 'Montserrat', sans-serif;
+}
+body {
+    background-image: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+    }
+    .topContainer {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-content: center;
+    }
+    .todo-container {
+        margin-top: 75px;
+        width: 550px;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: white;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 25%;
+
+    }
+    .todo-header h2 {
+        padding: 10px;
+    }
+    .todo {
+        width: 450px;
+    }
+    .todo-header input {
+        width: 90%;
+        border: none;
+        border-radius: 5px;
+        height: 25px;
+    }
+    .todo-header button {
+        border: none;
+        cursor: pointer;
+        border-radius: 50%;
+        padding: 7px;
+        background-color: rgb(93, 226, 93);
+    }
+    .todo-container ul {
+        list-style: none;
+    }
+    li {
+        color: darkblue;
+        border-radius: 5px;
+        background: rgba(255, 255, 255, 0.5);
+        padding: 10px;
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+        margin-right: 20px;
+    }
+    .icons-container {
+        display: flex;
+    }
+    .edit {
+        color: rgba(175, 35, 175, 0.767);
+    }
+    .remove {
+        color: rgba(238, 49, 49, 0.856);
+        padding-left: 3px;
+    }
+    .todo-list-item form {
+        display: flex;
+        width: 100%;
+    }
+    .todo-list-item input {
+        flex-grow: 3;
+    }
+    .editConfirm {
+        border: none;
+        cursor: pointer;
+        padding: 7px;
+        margin-left: 5px;
+        border-radius: 25%;
+        background-color: rgb(93, 226, 93);
+        height: 28px;
+    }
+    .reject {
+        color: rgba(238, 49, 49, 0.856);
+        padding-left: 3px;
+        padding-top: 5px;
+        font-size: 1.5em;
+    }

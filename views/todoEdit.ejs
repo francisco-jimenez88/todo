@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+        <title>To-do List</title>
+        <link rel="stylesheet" href="/stylesheet/style.css" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/363aabaf4d.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="topContainer">
+        <div class="todo-container">
+            <h2>To-do list</h2>
+            <div class="todo">
+                <form action="" method="POST" class="todo-header">
+                    <input type="text" name="content" placeholder="New task here">
+                    <button type="submit"><span class="fas fa-plus"></span></button>
+                </form>
+                <ul class="todo-list">
+                    <% todoTasks.forEach(details => { %>
+                    <% if (details._id == idTask) { %>
+                    <li class="todo-list-item">
+                        <form action="/edit/<%= details._id %>" method="POST">
+                            <input type="text" value="<%= details.content %>" name="content">
+                            <button type="submit" class="editConfirm"><span class="fas fa-check"></span></button>
+                            <a href="/" class="cancel"><span class="fas fa-times reject"></span></a>
+                        </form>
+                    </li>
+                <% } else { %>
+                <li class="todo-list-item">
+                    <div class="todo-list-item-name"><%= details.content %></div>
+                    <div class="goRight">
+                        <a href="/edit/<%= details._id %>" class="edit"><span class="fas fa-user-edit"></span>
+                        </a>
+                        <a href="/remove/<%= details._id %>" class="remove"><span class="fas fa-skull"></span>
+                        </a>
+                    </div>  
+                </li>
+                <% } %>
+                <% }) %>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
