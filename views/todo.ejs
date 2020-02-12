@@ -12,31 +12,35 @@
 </head>
 <body>
     <div class="topContainer">
-    <div class="todo-container">
-        <h2>To-do list</h2>
-        <div class="todo">
+        <div class="todo-container">
+            <h2>To-do list</h2>
+            <div class="pagination-links">
+                <a href="http://localhost:3000/?page=<%= Number(page) - 1 %>"><span>Previous page</span></a>
+                <a href="http://localhost:3000/?page=<%= Number(page) + 1 %>"><span>Next page</span></a>
+            </div>
+            <div class="todo">
 
-            <form action="/" method="POST" class="todo-header">
-                <input type="text" name="content" placeholder="New task here">
-                <button type="submit"><span class="fas fa-plus"></span></button>
-            </form>
-            <ul class="todo-list">
-                    <% todoTasks.forEach(details => { %>
-                <li class="todo-list-item">
-                    <div class="todo-list-item-name"><%= details.content %></div>
-                    <div class="icons-container">
-                        <a href="/edit/<%= details._id %>" class="edit">
-                            <span class="fas fa-user-edit"></span>
-                        </a>
-                        <a href="/remove/<%= details._id %>" class="remove">
-                            <span class="fas fa-skull skull"></span>
-                        </a>
-                    </div>
-                </li>
-                <% }) %>
-            </ul>
+                <form action="/" method="POST" class="todo-header">
+                    <input type="text" name="content" placeholder="New task here">
+                    <button type="submit"><span class="fas fa-plus"></span></button>
+                </form>
+                <ul class="todo-list">
+                        <% todoTasks.forEach(details => { %>
+                    <li class="todo-list-item">
+                        <div class="todo-list-item-name"><%= details.content %></div>
+                        <div class="icons-container">
+                            <a href="/edit/<%= details._id %>" class="edit">
+                                <span class="fas fa-user-edit"></span>
+                            </a>
+                            <a href="/remove/<%= details._id %>" class="remove">
+                                <span class="fas fa-skull skull"></span>
+                            </a>
+                        </div>
+                    </li>
+                    <% }) %>
+                </ul>
+            </div>
         </div>
     </div>
-</div>
 </body>
 </html>

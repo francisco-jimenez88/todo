@@ -23,7 +23,9 @@ body {
         color: white;
         background: rgba(255, 255, 255, 0.15);
         border-radius: 25%;
-
+    }
+    .pagination-links {
+        padding-bottom: 20px;
     }
     .todo-header h2 {
         padding: 10px;
