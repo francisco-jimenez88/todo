@@ -38,6 +38,11 @@ app.get("/", async (req, res) => {
     .sort({content:1})
 });
 
+//GET metod för about sidan
+app.get("/about", (req, res)=> {
+    res.render("about.ejs")
+});
+
 //POST metoden
 app.post("/", async (req, res)=> {
     const todoTask = new TodoTask({
@@ -50,3 +55,8 @@ app.post("/", async (req, res)=> {
         res.redirect("/");
     }
 });
+
+
+module.exports = {
+    app
+}
