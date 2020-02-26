@@ -35,6 +35,3 @@ describe('UI test for Todo app', ()=> { // valfri testrubrik som beskriver att d
         // Kontrollera att vi hamnar på rätt sökväg tex /todo/delete
     })
 })
-
-
-
