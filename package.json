@@ -25,7 +25,8 @@
   },
   "scripts": {
     "unittest": "mocha",
-    "start": "nodemon index.js",
+    "devStart": "nodemon index.js",
+    "start": "node dist/bundle.js",
     "cypress": "cypress open",
     "cy:run": "cypress run -- --record --spec 'cypress/integration/todo_ui_spec.js'",
     "test": "npm run unittest & npm run cy:run"
