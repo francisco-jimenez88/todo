@@ -3,11 +3,24 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const port = process.env.PORT || 3000;
-const dbURL = process.env.MONGO_ATLAS_URL || require('./config/config').databaseurl
+const dbURL = process.env.MONGO_ATLAS_URL
 
+if (dbURL == undefined) {
+    try {
+        dbURL = require("./config/config")
+    } catch (exception) {
+        console.log(exception.message)
+    }
+}
 
 const mongoose = require("mongoose");
 const config = require("./config/config");
+
+mongoose.set("useFindAndModify", false);
+mongoose.connect(dbURL, config.options)
+.then(() => {
+    app.listen(port, () => console.log (`Lyssnar på ${port} som är igång!`));
+})
 
 //Hämtar exportade filer
 const TodoTask = require("./models/TodoTask");
@@ -17,12 +30,6 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(deleteRoute);
 app.use(updateRoute);
-
-mongoose.set("useFindAndModify", false);
-mongoose.connect(dbURL, config.options)
-.then(() => {
-    app.listen(port, () => console.log (`Lyssnar på ${port} som är igång!`));
-})
 
 
 app.set("view engine", "ejs");
