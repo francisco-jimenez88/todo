@@ -19,7 +19,7 @@ app.use(deleteRoute);
 app.use(updateRoute);
 
 mongoose.set("useFindAndModify", false);
-mongoose.connect(config.databaseurl, config.options)
+mongoose.connect(dbURL, config.options)
 .then(() => {
     app.listen(port, () => console.log (`Lyssnar på ${port} som är igång!`));
 })
