@@ -2,6 +2,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+const port = process.env.PORT || 3000;
 
 const mongoose = require("mongoose");
 const config = require("./config/config");
@@ -16,10 +17,17 @@ app.use(deleteRoute);
 app.use(updateRoute);
 
 mongoose.set("useFindAndModify", false);
-mongoose.connect(config.databaseurl, config.options)
+
+
+try {
+    mongoose.connect(config.databaseurl, config.options)
 .then(() => {
-    app.listen(3000, () => console.log ("Lyssnar på servern som är igång!"));
+    app.listen(port, () => console.log (`Lyssnar på ${port} som är igång!`));
 })
+} catch (exception) {
+    console.log("Could not connect to mongoose", exception.message)
+}
+
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, 'public')));
 
