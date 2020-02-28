@@ -2,8 +2,10 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+const mongoose = require("mongoose");
+const options = {useUnifiedTopology: true, useNewUrlParser: true}
 const port = process.env.PORT || 3000;
-const dbURL = process.env.MONGO_ATLAS_URL
+let dbURL = process.env.MONGO_ATLAS_URL;
 
 if (dbURL == undefined) {
     try {
@@ -13,11 +15,8 @@ if (dbURL == undefined) {
     }
 }
 
-const mongoose = require("mongoose");
-const config = require("./config/config");
-
 mongoose.set("useFindAndModify", false);
-mongoose.connect(dbURL, config.options)
+mongoose.connect(dbURL, options)
 .then(() => {
     app.listen(port, () => console.log (`Lyssnar på ${port} som är igång!`));
 })
