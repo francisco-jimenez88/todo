@@ -3,6 +3,8 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const port = process.env.PORT || 3000;
+const dbURL = process.env.MONGO_ATLAS_URL || require('./config/config').databaseurl
+
 
 const mongoose = require("mongoose");
 const config = require("./config/config");
@@ -17,16 +19,11 @@ app.use(deleteRoute);
 app.use(updateRoute);
 
 mongoose.set("useFindAndModify", false);
-
-
-try {
-    mongoose.connect(config.databaseurl, config.options)
+mongoose.connect(config.databaseurl, config.options)
 .then(() => {
     app.listen(port, () => console.log (`Lyssnar på ${port} som är igång!`));
 })
-} catch (exception) {
-    console.log("Could not connect to mongoose", exception.message)
-}
+
 
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, 'public')));
